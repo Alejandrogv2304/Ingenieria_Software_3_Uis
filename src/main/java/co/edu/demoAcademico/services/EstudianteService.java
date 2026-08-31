@@ -1,12 +1,12 @@
 package co.edu.demoAcademico.services;
 
-import co.edu.demoAcademico.exception.EmailAlreadyExists;
 import co.edu.demoAcademico.models.Estudiante;
 import co.edu.demoAcademico.repositories.EstudianteRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class EstudianteService {
@@ -18,36 +18,22 @@ public class EstudianteService {
     }
 
     public Estudiante crear(Estudiante estudiante) {
-
-        // ----------------------------
-        // ZONA DE LÓGICA DE NEGOCIO:
-        // Regla: email único
-        // ----------------------------
-        repository.findByEmail(estudiante.getEmail())
-                .ifPresent(e -> {
-                    throw new IllegalStateException("Email ya registrado");
-                });
-
-        // ============================
-        // ZONA DE ACCESO A LA BD:
-        // Persistencia vía Repository
-        // ============================
+        if (repository.existsByEmail(estudiante.getEmail())) {
+            throw new EmailDuplicadoException(estudiante.getEmail());
+        }
         return repository.save(estudiante);
     }
 
     public List<Estudiante> listar() {
-        // ============================
-        // ZONA DE ACCESO A LA BD:
-        // Consulta vía Repository
-        // ============================
         return repository.findAll();
     }
 
-    public Optional<Estudiante> buscarPorEmail(String email){
-         Optional<Estudiante> estudiante=repository.findByEmail(email);
-        if(!estudiante.isEmpty()){
-            throw new EmailAlreadyExists("Email ya registrado");
-        }
-         return estudiante;
+    public Page<Estudiante> listar(Pageable pageable) {
+        return repository.findAll(pageable);
+    }
+
+    public Estudiante buscarPorEmail(String email) {
+        return repository.findByEmail(email)
+                .orElseThrow(() -> new EstudianteNoEncontradoException(email));
     }
 }

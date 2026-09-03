@@ -1,9 +1,11 @@
 package co.edu.demoAcademico.service;
 
-import co.edu.demoAcademico.exception.BusinessException;
-import co.edu.demoAcademico.exception.NotFoundException;
-import co.edu.demoAcademico.model.Estudiante;
-import co.edu.demoAcademico.repository.EstudianteRepository;
+import co.edu.demoAcademico.common.exception.BusinessException;
+import co.edu.demoAcademico.common.exception.NotFoundException;
+import co.edu.demoAcademico.estudiantes.model.Estudiante;
+import co.edu.demoAcademico.estudiantes.EstudianteRepository;
+import co.edu.demoAcademico.estudiantes.EstudianteService;
+import co.edu.demoAcademico.estudiantes.port.EstudianteQueryPort;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -11,12 +13,19 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @Transactional
-public class EstudianteServiceImpl implements EstudianteService {
+public class EstudianteServiceImpl implements EstudianteService, EstudianteQueryPort {
 
     private final EstudianteRepository repo;
 
     public EstudianteServiceImpl(EstudianteRepository repo) {
         this.repo = repo;
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Estudiante obtenerPorId(Long id) {
+        return repo.findById(id)
+                .orElseThrow(() -> new NotFoundException("Estudiante no encontrado: " + id));
     }
 
     @Override
@@ -27,12 +36,7 @@ public class EstudianteServiceImpl implements EstudianteService {
         return repo.save(e);
     }
 
-    @Override
-    @Transactional(readOnly = true)
-    public Estudiante obtenerPorId(Long id) {
-        return repo.findById(id)
-                .orElseThrow(() -> new NotFoundException("Estudiante no encontrado: " + id));
-    }
+
 
     @Override
     @Transactional(readOnly = true)

@@ -1,7 +1,7 @@
 package co.edu.demoAcademico.config;
 
-import co.edu.demoAcademico.model.Estudiante;
-import co.edu.demoAcademico.repository.EstudianteRepository;
+import co.edu.demoAcademico.estudiantes.model.Estudiante;
+import co.edu.demoAcademico.estudiantes.EstudianteRepository;
 import com.github.javafaker.Faker;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;

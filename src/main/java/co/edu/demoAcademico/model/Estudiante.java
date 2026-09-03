@@ -1,4 +1,4 @@
-package co.edu.demoAcademico.models;
+package co.edu.demoAcademico.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;

@@ -1,4 +1,4 @@
-package co.edu.demoAcademico.programas;
+package co.edu.demoAcademico.programas.model;
 
 import jakarta.persistence.*;
 

@@ -1,7 +1,7 @@
 package co.edu.demoAcademico.asignaturas;
 
-import co.edu.demoAcademico.programas.Programa;
-import co.edu.demoAcademico.programas.ProgramaService;
+import co.edu.demoAcademico.programas.model.Programa;
+import co.edu.demoAcademico.programas.service.ProgramaService;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

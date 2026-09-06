@@ -1,6 +1,6 @@
 package co.edu.demoAcademico.asignaturas;
 
-import co.edu.demoAcademico.programas.Programa;
+import co.edu.demoAcademico.programas.model.Programa;
 import jakarta.persistence.*;
 
 @Entity

@@ -1,5 +1,6 @@
-package co.edu.demoAcademico.programas;
+package co.edu.demoAcademico.programas.service;
 
+import co.edu.demoAcademico.programas.model.Programa;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 

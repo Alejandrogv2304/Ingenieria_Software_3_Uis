@@ -1,4 +1,4 @@
-package co.edu.demoAcademico.common.controller;
+package co.edu.demoAcademico.matriculas.controller;
 
 import co.edu.demoAcademico.common.api.ApiResponse;
 import co.edu.demoAcademico.common.api.ResponseBuilder;

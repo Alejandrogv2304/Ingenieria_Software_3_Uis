@@ -2,9 +2,9 @@ package co.edu.demoAcademico.service;
 
 import co.edu.demoAcademico.common.exception.BusinessException;
 import co.edu.demoAcademico.common.exception.NotFoundException;
-import co.edu.demoAcademico.programas.Programa;
-import co.edu.demoAcademico.programas.ProgramaRepository;
-import co.edu.demoAcademico.programas.ProgramaService;
+import co.edu.demoAcademico.programas.model.Programa;
+import co.edu.demoAcademico.programas.repository.ProgramaRepository;
+import co.edu.demoAcademico.programas.service.ProgramaService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;

@@ -4,6 +4,7 @@
 
 - Clona el repositorio y ubicate en la rama llamada laboratorio-3.
 Haciendo uso de este comando:
+- git clone https://github.com/Alejandrogv2304/Ingenieria_Software_3_Uis.git
 
 #### git checkout laboratorio-3
 
